@@ -17,8 +17,12 @@ bool ModuleSceneIntro::Start()
 	LOG("Loading Intro assets");
 	bool ret = true;
 
-	App->camera->Move(vec3(1.0f, 1.0f, 0.0f));
-	App->camera->LookAt(vec3(0, 0, 0));
+
+	// Create world ground
+	createGround();
+
+	/*App->camera->Move(vec3(1.0f, 1.0f, 0.0f));
+	App->camera->LookAt(vec3(0, 0, 0));*/
 
 	return ret;
 }
@@ -37,14 +41,19 @@ update_status ModuleSceneIntro::Update(float dt)
 
 
 
-	// Player's Camera
+
+	// Player's Camera linked to car
 	PlayerCamera();
 
 
 
-	Plane p(0, 1, 0, 0);
-	p.axis = true;
-	p.Render();
+
+	// Draw basic ground
+	p2List_item<Cube>* c = smallCubes.getFirst();
+	while (c != NULL) {
+		c->data.Render();
+		c = c->next;
+	}
 
 	return UPDATE_CONTINUE;
 }
@@ -57,7 +66,7 @@ void ModuleSceneIntro::PlayerCamera() {
 	
 	if (App->player->position.getY() > CAMERA_Y_LIMIT) 
 	{
-		float cameraDistance = 12;
+		float cameraDistance = 10;
 
 		float cameraX = App->player->position.getX() - cameraDistance * App->player->GetVehicleForwardVector().x;
 		float cameraY = App->player->position.getY() - cameraDistance * App->player->GetVehicleForwardVector().y + 4;
@@ -82,4 +91,34 @@ void ModuleSceneIntro::PlayerCamera() {
 		App->camera->LookAt(vec3(posX, posY, posZ));
 	}
 
+}
+
+void ModuleSceneIntro::createGround() {
+	Cube groundToAdd;
+
+	float groundTerrainSize = 40;	// Change this value to increase/decrease basic ground size
+
+	groundToAdd.size = { groundTerrainSize, 1, groundTerrainSize };
+
+	int type = 0;
+	// X-axis
+	for (int i = 0; i < 10; i++)
+	{
+		// Z-axis
+		for (int j = 0; j < 10; j++) {
+
+			groundToAdd.SetPos(i * -groundTerrainSize + groundTerrainSize, 0, j * groundTerrainSize);
+
+			switch (groundCoordinates[i][j])
+			{
+			case 0:
+				groundToAdd.color = Purple;	// Ground color
+
+				App->physics->AddBody(groundToAdd, 0);
+				smallCubes.add(groundToAdd);
+
+				break;
+			}
+		}
+	}
 }
