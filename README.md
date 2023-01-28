@@ -17,10 +17,17 @@ Simple 3D racing car game created for Physics II subject at CITM-UPC university.
 
 ## Developers
 
- - {Dev01} - {Role(s)}
- - {Dev02} - {Role(s)}
- - {Dev03} - {Role(s)}
- - {Dev04} - {Role(s)}
+ ![](https://raw.githubusercontent.com/AdriaPm/RaceCarGame3D/main/TeamPhotos/arnaujimenez.png)
+ - [Arnau Jiménez Gallego](https://github.com/Historn) 
+ 
+ ![](https://raw.githubusercontent.com/AdriaPm/RaceCarGame3D/main/TeamPhotos/adriapons.jpg)
+ - [Adrià Pons Mensa](https://github.com/AdriaPm)
+ 
+ ![](https://raw.githubusercontent.com/AdriaPm/RaceCarGame3D/main/TeamPhotos/rylangraham.jpg)
+ - [Rylan Graham](https://github.com/RylanJGraham)
+ 
+ ![](https://raw.githubusercontent.com/AdriaPm/RaceCarGame3D/main/TeamPhotos/joelchaves.jpg)
+ - [Joel Chaves Moreno](https://github.com/JoeyCM)
 
 ## License
 
