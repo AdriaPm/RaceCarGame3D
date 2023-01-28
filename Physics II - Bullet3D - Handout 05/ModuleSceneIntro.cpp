@@ -112,7 +112,7 @@ void ModuleSceneIntro::createGround() {
 			switch (groundCoordinates[i][j])
 			{
 			case 0:
-				groundToAdd.color = Purple;	// Ground color
+				groundToAdd.color = Orange;	// Ground color
 
 				App->physics->AddBody(groundToAdd, 0);
 				smallCubes.add(groundToAdd);
