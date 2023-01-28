@@ -45,6 +45,75 @@ struct VehicleInfo
 	vec3 chassis5_size;
 	vec3 chassis5_offset;
 
+	// RearWing part
+	vec3 chassis6_size;
+	vec3 chassis6_offset;
+
+	// RearWing part 2
+	vec3 chassis7_size;
+	vec3 chassis7_offset;
+
+	// Motor part 1
+	vec3 chassis8_size;
+	vec3 chassis8_offset;
+
+	// Motor part 2
+	vec3 chassis9_size;
+	vec3 chassis9_offset;
+
+	// Motor part 3
+	vec3 chassis10_size;
+	vec3 chassis10_offset;
+
+	// Cockpit part 1
+	vec3 chassis11_size;
+	vec3 chassis11_offset;
+
+	// Cockpit part 2
+	vec3 chassis12_size;
+	vec3 chassis12_offset;
+
+	// Cockpit part 3
+	vec3 chassis13_size;
+	vec3 chassis13_offset;
+
+	// Steering wheel support
+	vec3 chassis14_size;
+	vec3 chassis14_offset;
+
+	// Steering wheel
+	vec3 chassis15_size;
+	vec3 chassis15_offset;
+
+	// Steering wheel display
+	vec3 chassis16_size;
+	vec3 chassis16_offset;
+
+	// Motor air take hole
+	vec3 chassis17_size;
+	vec3 chassis17_offset;
+
+	// Pilot body
+	vec3 chassis18_size;
+	vec3 chassis18_offset;
+	
+	// Pilot helmet
+	vec3 chassis19_size;
+	vec3 chassis19_offset;
+
+	// Pilot helmet visor
+	vec3 chassis20_size;
+	vec3 chassis20_offset;
+
+	// Pilot left arm
+	vec3 chassis21_size;
+	vec3 chassis21_offset;
+
+	// Pilot right arm
+	vec3 chassis22_size;
+	vec3 chassis22_offset;
+
+
 	float mass;
 	float suspensionStiffness; // default to 5.88 / 10.0 offroad / 50.0 sports car / 200.0 F1 car
 	float suspensionCompression; // default to 0.83

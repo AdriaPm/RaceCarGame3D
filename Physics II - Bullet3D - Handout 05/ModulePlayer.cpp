@@ -26,12 +26,12 @@ bool ModulePlayer::Start()
 	car.chassis_offset.Set(0, 1.5, 0);
 
 	// FrontWing structure
-	car.chassis2_size.Set(1.0f, .5f, 1.5f);
-	car.chassis2_offset.Set(0, 1.1f, 3.2);
+	car.chassis2_size.Set(1.0f, .5f, 1.3f);
+	car.chassis2_offset.Set(0, 1.3f, 3.0);
 
 	// FrontWing part
 	car.chassis3_size.Set(3.0f, .25f, .75f);
-	car.chassis3_offset.Set(0, .9f, 4.2);
+	car.chassis3_offset.Set(0, 1.15f, 4.0);
 
 	// RearWing stucture 1
 	car.chassis4_size.Set(.25f, 1.0f, .75f);
@@ -41,20 +41,88 @@ bool ModulePlayer::Start()
 	car.chassis5_size.Set(.25f, 1.0f, .75f);
 	car.chassis5_offset.Set(-.82f, 2.1f, -2.1);
 
+	// RearWing part
+	car.chassis6_size.Set(1.8f, .15f, 1.0f);
+	car.chassis6_offset.Set(0.0f, 2.4f, -2.25);
+
+	// RearWing part 2
+	car.chassis7_size.Set(1.8f, .15f, .15f);
+	car.chassis7_offset.Set(0.0f, 2.55f, -2.67);
+
+	// Motor part 1
+	car.chassis8_size.Set(1.6f, .55f, 1.5f);
+	car.chassis8_offset.Set(0.0f, 1.85f, -.7f);
+
+	// Motor part 2
+	car.chassis9_size.Set(1.0f, .35f, 1.1f);
+	car.chassis9_offset.Set(0.0f, 2.3f, -.5f);
+
+	// Motor part 3
+	car.chassis10_size.Set(0.4f, .35f, 0.8f);
+	car.chassis10_offset.Set(0.0f, 2.6f, -.2f);
+
+	// Cockpit part 1
+	car.chassis11_size.Set(0.2f, .6f, 2.0f);
+	car.chassis11_offset.Set(-0.45f, 1.85f, 1.0f);
+
+	// Cockpit part 2
+	car.chassis12_size.Set(0.2f, .6f, 2.0f);
+	car.chassis12_offset.Set(0.45f, 1.85f, 1.0f);
+
+	// Cockpit part 3
+	car.chassis13_size.Set(1.1f, .6f, .3f);
+	car.chassis13_offset.Set(0.0f, 1.85f, 2.0f);
+
+	// Steering wheel support
+	car.chassis14_size.Set(.1f, .1f, .75f);
+	car.chassis14_offset.Set(0.0f, 2.05f, 1.6f);
+
+	// Steering wheel
+	car.chassis15_size.Set(.45f, .25f, .1f);
+	car.chassis15_offset.Set(0.0f, 2.05f, 1.2f);
+
+	// Steering wheel display
+	car.chassis16_size.Set(.2f, .1f, .05f);
+	car.chassis16_offset.Set(0.0f, 2.1f, 1.165f);
+
+	// Motor air take hole
+	car.chassis17_size.Set(.25f, .25f, .05f);
+	car.chassis17_offset.Set(0.0f, 2.6f, 0.2f);
+
+	// Pilot body
+	car.chassis18_size.Set(.6f, .4f, .3f);
+	car.chassis18_offset.Set(0.0f, 2.0f, 0.6f);
+
+	// Pilot helmet
+	car.chassis19_size.Set(.5f, .5f, .55f);
+	car.chassis19_offset.Set(0.0f, 2.45f, 0.6f);
+
+	// Pilot helmet visor
+	car.chassis20_size.Set(.4f, .2f, .05f);
+	car.chassis20_offset.Set(0.0f, 2.5f, 0.87f);
+
+	// Pilot left arm
+	car.chassis21_size.Set(.15f, .15f, .7f);
+	car.chassis21_offset.Set(0.22f, 2.05f, 0.8f);
+
+	// Pilot right arm
+	car.chassis22_size.Set(.15f, .15f, .7f);
+	car.chassis22_offset.Set(-0.22f, 2.05f, 0.8f);
+
 	// Car properties ----------------------------------------
 	car.mass = 500.0f;
-	car.suspensionStiffness = 20.88f;
-	car.suspensionCompression = 0.83f;
-	car.suspensionDamping = 1.23f;
-	car.maxSuspensionTravelCm = 1000.0f;
-	car.frictionSlip = 0.9f;
-	car.maxSuspensionForce = 6000.0f;
+	car.suspensionStiffness = 30.88f;
+	car.suspensionCompression = 2.83f;
+	car.suspensionDamping = 2.23f;
+	car.maxSuspensionTravelCm = 5000.0f;
+	car.frictionSlip = 0.8f;
+	car.maxSuspensionForce = 4000.0f;
 
 	// Wheel properties ---------------------------------------
 	float connection_height = 1.5f;
 	float wheel_radius = 0.5f;
 	float wheel_width = 0.65f;
-	float suspensionRestLength = 0.6f;
+	float suspensionRestLength = 0.2f;
 
 	// Don't change anything below this line ------------------
 
@@ -175,7 +243,7 @@ update_status ModulePlayer::Update(float dt)
 	}
 
 	// Brake if there's no throttle
-	if (App->input->GetKey(SDL_SCANCODE_S) != KEY_REPEAT && App->input->GetKey(SDL_SCANCODE_W) != KEY_REPEAT) 
+	if (App->input->GetKey(SDL_SCANCODE_DOWN) != KEY_REPEAT && App->input->GetKey(SDL_SCANCODE_UP) != KEY_REPEAT) 
 	{
 		brake = BRAKE_POWER / 100;
 
