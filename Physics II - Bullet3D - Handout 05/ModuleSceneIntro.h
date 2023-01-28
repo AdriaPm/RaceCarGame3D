@@ -52,6 +52,8 @@ public:
 
 private:
 
+	bool isCameraFixed = true;
+
 	int groundCoordinates[10][10] = {
 		0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 		0, 0, 0, 0, 0, 0, 0, 0, 0, 0,

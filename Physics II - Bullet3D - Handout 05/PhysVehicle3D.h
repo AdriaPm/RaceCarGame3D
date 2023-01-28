@@ -24,11 +24,26 @@ struct VehicleInfo
 {
 	~VehicleInfo();
 	
+	/* VEHICLE PARTS */
+	// Main car structure
 	vec3 chassis_size;
 	vec3 chassis_offset;
 
+	// Front wing structure
 	vec3 chassis2_size;
 	vec3 chassis2_offset;
+
+	// FrontWing part
+	vec3 chassis3_size;
+	vec3 chassis3_offset;
+
+	// RearWing stucture 1
+	vec3 chassis4_size;
+	vec3 chassis4_offset;
+
+	// RearWing stucture 2
+	vec3 chassis5_size;
+	vec3 chassis5_offset;
 
 	float mass;
 	float suspensionStiffness; // default to 5.88 / 10.0 offroad / 50.0 sports car / 200.0 F1 car

@@ -38,12 +38,14 @@ bool ModuleSceneIntro::CleanUp()
 // Update
 update_status ModuleSceneIntro::Update(float dt)
 {
-
-
+	// Enable/Disable player's camera linked to car
+	if (App->input->GetKey(SDL_SCANCODE_C) == KEY_DOWN)
+		isCameraFixed = !isCameraFixed;
 
 
 	// Player's Camera linked to car
-	PlayerCamera();
+	if(isCameraFixed)
+		PlayerCamera();
 
 
 
