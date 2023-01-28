@@ -19,10 +19,19 @@ public:
 	update_status Update(float dt);
 	bool CleanUp();
 
+	vec3 GetVehicleForwardVector();
+
 public:
 
 	PhysVehicle3D* vehicle;
 	float turn;
 	float acceleration;
 	float brake;
+
+	btVector3 position;
+
+	vec3 initialPosition = { 0, 0, 0 };
+
+
+
 };

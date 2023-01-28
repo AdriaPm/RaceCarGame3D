@@ -97,8 +97,11 @@ bool ModulePlayer::Start()
 	car.wheels[3].steering = false;
 
 	vehicle = App->physics->AddVehicle(car);
-	vehicle->SetPos(0, 12, 10);
+	vehicle->SetPos(0, 0, 0);
 	
+	vehicle->collision_listeners.add(this);
+	vehicle->SetId(1);
+
 	return true;
 }
 
@@ -115,34 +118,64 @@ update_status ModulePlayer::Update(float dt)
 {
 	turn = acceleration = brake = 0.0f;
 
+	// Drag force applied to the vehicle
+	App->physics->DragForce(vehicle, 30);
+
+	position.setValue(vehicle->GetPos().getX(), vehicle->GetPos().getY(), vehicle->GetPos().getZ());
+
+	// Accelerate
 	if(App->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
 	{
 		acceleration = MAX_ACCELERATION;
 	}
 
+	// Turn Left
 	if(App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
 	{
 		if(turn < TURN_DEGREES)
 			turn +=  TURN_DEGREES;
 	}
 
+	// Turn Right
 	if(App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
 	{
 		if(turn > -TURN_DEGREES)
 			turn -= TURN_DEGREES;
 	}
 
+	// Brake
 	if(App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
 	{
 		brake = BRAKE_POWER;
 	}
 
+	// Car Jumping
+	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) 
+	{
+		vehicle->Push(0, 3000, 0);
+	}
+
+	// Brake if there's no throttle
+	if (App->input->GetKey(SDL_SCANCODE_S) != KEY_REPEAT && App->input->GetKey(SDL_SCANCODE_W) != KEY_REPEAT) 
+	{
+		brake = BRAKE_POWER / 100;
+
+		if (vehicle->GetKmh() > 100) 
+		{
+			brake = BRAKE_POWER / 30;
+		}
+	}
+
+
 	vehicle->ApplyEngineForce(acceleration);
 	vehicle->Turn(turn);
 	vehicle->Brake(brake);
 
-	vehicle->Render();
 
+	/* POST UPDATE */
+	vehicle->Render();
+	
+	// Set window title
 	char title[80];
 	sprintf_s(title, "%.1f Km/h", vehicle->GetKmh());
 	App->window->SetTitle(title);
@@ -150,5 +183,8 @@ update_status ModulePlayer::Update(float dt)
 	return UPDATE_CONTINUE;
 }
 
+vec3 ModulePlayer::GetVehicleForwardVector() {
+	return vehicle->GetForwardVector();
+}
 
 

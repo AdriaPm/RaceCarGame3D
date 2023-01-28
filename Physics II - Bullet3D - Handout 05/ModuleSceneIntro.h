@@ -5,6 +5,8 @@
 #include "Primitive.h"
 
 #define MAX_SNAKE 2
+#define CAMERA_Y_LIMIT -30
+
 
 struct PhysBody3D;
 struct PhysMotor3D;
@@ -20,6 +22,8 @@ public:
 	bool CleanUp();
 
 	void OnCollision(PhysBody3D* body1, PhysBody3D* body2);
+
+	void PlayerCamera();
 
 public:
 	/*

@@ -360,6 +360,31 @@ void ModulePhysics3D::AddConstraintHinge(PhysBody3D& bodyA, PhysBody3D& bodyB, c
 	hinge->setDbgDrawSize(2.0f);
 }
 
+void ModulePhysics3D::AddConstraintSlider(PhysBody3D& bodyA, PhysBody3D& bodyB, btTransform& frameinA, btTransform& frameinB)
+{
+	btSliderConstraint* constraint = new btSliderConstraint(
+		*(bodyA.body),
+		*(bodyB.body),
+		frameinA,
+		frameinB,
+		true);
+	world->addConstraint(constraint);
+	constraints.add((btTypedConstraint*)constraint);
+}
+
+vec3 ModulePhysics3D::BuoyancyForce(PhysBody3D* body, float volume) {
+	vec3 forceBuoy = { 0, (1 * abs(world->getGravity().getY() * volume) * -1) , 0 };
+	return forceBuoy;
+}
+
+vec3 ModulePhysics3D::DragForce(PhysBody3D* body, float density) {
+	float dragModule;
+	dragModule = 0.5f * density;
+
+	vec3 forceDrag = { -dragModule * body->GetLinearVelocity().getX(), -dragModule * body->GetLinearVelocity().getY(),-dragModule * body->GetLinearVelocity().getZ() };
+	return forceDrag;
+}
+
 // =============================================
 void DebugDrawer::drawLine(const btVector3& from, const btVector3& to, const btVector3& color)
 {
