@@ -40,12 +40,15 @@ public:
 
 	void PlayerCamera();
 
+	void ResetScene(float dt);
+
 	void createGround();
 	void createRoadCircuit();
 	void createCheckpoints();
 
 	// Geometry shapes
 	void addCubeToMap(vec3 pos, vec3 size, Color rgb, int angle = 0, bool rot_X = false, bool rot_Y = false, bool rot_Z = false);
+	void addCubeSensorToMap(vec3 pos, vec3 size, Color rgb, int angle = 0, bool rot_X = false, bool rot_Y = false, bool rot_Z = false, int id = -1);
 	void addRock(vec3 position, float angle);
 	void addCheckpoint(vec3 pos, vec3 size, Color rgb, int angle = 0, bool rot_X = false, bool rot_Y = false, bool rot_Z = false, int id = -1, bool passed_ = false);
 
@@ -73,6 +76,8 @@ public:
 
 	PhysMotor3D* left_wheel;
 	PhysMotor3D* right_wheel;
+
+	CheckPoint water;
 
 private:
 

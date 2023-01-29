@@ -16,6 +16,7 @@ Simple 3D racing car game created for Physics II subject at CITM-UPC university.
 ## Key Features
 
 - {F1} - Enable/Disable Debug Mode
+- {Z} - Reset Scene
 
 If Debug Mode is ENABLED:
 - {I} - Increase vehicle mass (+1)
@@ -42,3 +43,7 @@ If Debug Mode is ENABLED:
 ## License
 
 This project is licensed under an unmodified MIT license, which is an OSI-certified license that allows static linking with closed source software. Check [LICENSE](https://mit-license.org/) for further details.
+
+## Github Repository
+
+Click [here](https://github.com/AdriaPm/RaceCarGame3D) to go to our Github project repository.

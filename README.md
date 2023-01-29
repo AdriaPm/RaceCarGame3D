@@ -16,6 +16,7 @@ Simple 3D racing car game created for Physics II subject at CITM-UPC university.
 ## Key Features
 
 - {F1} - Enable/Disable Debug Mode
+- {Z} - Reset Scene
 
 If Debug Mode is ENABLED:
 - {I} - Increase vehicle mass (+1)

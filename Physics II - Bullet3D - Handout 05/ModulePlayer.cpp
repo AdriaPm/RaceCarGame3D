@@ -192,8 +192,10 @@ bool ModulePlayer::Start()
 	vehicle->collision_listeners.add(this);
 	vehicle->SetId(1);
 
-	gameTimer = 250;
-	laps = 0;
+	gameTimer = 150;
+	checkpointCount = 0;
+
+	isWater = false;
 
 	return true;
 }
@@ -360,8 +362,11 @@ update_status ModulePlayer::Update(float dt)
 
 	// Set window title
 	char title[200];
-	sprintf_s(title, "SNOW RACE CAR GAME 3D | Lap %d/3 | Time: %.f | Vehicle mass: %.1f kg | Vehicle current velocity: %.1f Km/h | World's Gravity: %.2f m/s2 | Drag Force: %s | Buoyancy Force: %s", laps, gameTimer, vehicle->info.mass, vehicle->GetKmh(), App->physics->gravity_y, isDragForceEnabled ? "ENABLED":"DISABLED", isBuoyancyForceEnabled ? "ENABLED" : "DISABLED");
+	sprintf_s(title, "SNOW RACE CAR GAME 3D | Checkpoints %d/5 | Time: %.f | Vehicle mass: %.1f kg | Vehicle current velocity: %.1f Km/h | World's Gravity: %.2f m/s2 | Drag Force: %s | Buoyancy Force: %s", checkpointCount, gameTimer, vehicle->info.mass, vehicle->GetKmh(), App->physics->gravity_y, isDragForceEnabled ? "ENABLED":"DISABLED", isBuoyancyForceEnabled ? "ENABLED" : "DISABLED");
 	App->window->SetTitle(title);
+
+	if (checkpointCount == 5 || gameTimer <= 0)
+		App->scene_intro->ResetScene(dt);
 
 	return UPDATE_CONTINUE;
 }
@@ -370,32 +375,14 @@ void ModulePlayer::OnCollision(PhysBody3D* body1, PhysBody3D* body2)
 {
 	p2List_item<CheckPoint>* checkItem = App->scene_intro->checkPointList.getFirst();
 	while (checkItem != NULL) {
-		if (checkItem->data.body->id == body2->id)
+		if (checkItem->data.body->id == body2->id && checkItem->data.passed == false && body2->id != 6) {
 			checkItem->data.passed = true;
+			checkpointCount++;
+		}
+			
 		checkItem = checkItem->next;
 	}
-	/*switch (body2->id)
-	{
-	case 1:
-		App->scene_intro->checkPointList.getFirst()->data.passed = true;
-		break;
-	case 2:
-		p2List_item<CheckPoint>* checkItem = App->scene_intro->checkPointList.getFirst();
-		while (checkItem != NULL) {
-			if (checkItem->data.body->id == body2->id)
-				checkItem->data.passed = true;
-			checkItem = checkItem->next;
-		}
-		break;
-	case 3:
-		p2List_item<CheckPoint>* checkItem = App->scene_intro->checkPointList.getFirst();
-		while (checkItem != NULL) {
-			if (checkItem->data.body->id == body2->id)
-				checkItem->data.passed = true;
-			checkItem = checkItem->next;
-		}
-		break;
-	}*/
+
 }
 
 void ModulePlayer::resetCarPos()

@@ -43,12 +43,12 @@ public:
 	bool isDragForceEnabled = true;
 	bool isBuoyancyForceEnabled = true;
 
-	float gameTimer = 250;
-	int laps = 0;
+	float gameTimer = 120;
+	int checkpointCount = 0;
+
+	bool isWater = false;
 
 private:
-
-	int checkpointCount = 0;
 
 	uint turboSFX = 0;
 	bool isTurboSFXPlayed = false;

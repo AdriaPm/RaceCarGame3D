@@ -1,10 +1,13 @@
 ﻿  ModuleSceneIntro.cpp
-C:\Users\adria\Documents\GitHub\RaceCarGame3D\Physics II - Bullet3D - Handout 05\ModuleSceneIntro.cpp(219,20): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\adria\Documents\GitHub\RaceCarGame3D\Physics II - Bullet3D - Handout 05\ModuleSceneIntro.cpp(221,20): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\adria\Documents\GitHub\RaceCarGame3D\Physics II - Bullet3D - Handout 05\ModuleSceneIntro.cpp(223,20): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\adria\Documents\GitHub\RaceCarGame3D\Physics II - Bullet3D - Handout 05\ModuleSceneIntro.cpp(238,20): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\adria\Documents\GitHub\RaceCarGame3D\Physics II - Bullet3D - Handout 05\ModuleSceneIntro.cpp(240,20): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\adria\Documents\GitHub\RaceCarGame3D\Physics II - Bullet3D - Handout 05\ModuleSceneIntro.cpp(242,20): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\adria\Documents\GitHub\RaceCarGame3D\Physics II - Bullet3D - Handout 05\ModuleSceneIntro.cpp(272,46): warning C4305: 'argumento': truncamiento de 'double' a 'btScalar'
-C:\Users\adria\Documents\GitHub\RaceCarGame3D\Physics II - Bullet3D - Handout 05\ModuleSceneIntro.cpp(276,46): warning C4305: 'argumento': truncamiento de 'double' a 'btScalar'
-  3D Physics.vcxproj -> C:\Users\adria\Documents\GitHub\RaceCarGame3D\Physics II - Bullet3D - Handout 05\Debug\3D Physics - class5.exe
+D:\Arnau\UPC CITM\physics\RaceCarGame3D\Physics II - Bullet3D - Handout 05\ModuleSceneIntro.cpp(238,20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Arnau\UPC CITM\physics\RaceCarGame3D\Physics II - Bullet3D - Handout 05\ModuleSceneIntro.cpp(240,20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Arnau\UPC CITM\physics\RaceCarGame3D\Physics II - Bullet3D - Handout 05\ModuleSceneIntro.cpp(242,20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Arnau\UPC CITM\physics\RaceCarGame3D\Physics II - Bullet3D - Handout 05\ModuleSceneIntro.cpp(259,20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Arnau\UPC CITM\physics\RaceCarGame3D\Physics II - Bullet3D - Handout 05\ModuleSceneIntro.cpp(261,20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Arnau\UPC CITM\physics\RaceCarGame3D\Physics II - Bullet3D - Handout 05\ModuleSceneIntro.cpp(263,20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Arnau\UPC CITM\physics\RaceCarGame3D\Physics II - Bullet3D - Handout 05\ModuleSceneIntro.cpp(278,20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Arnau\UPC CITM\physics\RaceCarGame3D\Physics II - Bullet3D - Handout 05\ModuleSceneIntro.cpp(280,20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Arnau\UPC CITM\physics\RaceCarGame3D\Physics II - Bullet3D - Handout 05\ModuleSceneIntro.cpp(282,20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Arnau\UPC CITM\physics\RaceCarGame3D\Physics II - Bullet3D - Handout 05\ModuleSceneIntro.cpp(316,46): warning C4305: 'argument': truncation from 'double' to 'btScalar'
+D:\Arnau\UPC CITM\physics\RaceCarGame3D\Physics II - Bullet3D - Handout 05\ModuleSceneIntro.cpp(320,46): warning C4305: 'argument': truncation from 'double' to 'btScalar'
+  3D Physics.vcxproj -> D:\Arnau\UPC CITM\physics\RaceCarGame3D\Physics II - Bullet3D - Handout 05\Debug\3D Physics - class5.exe

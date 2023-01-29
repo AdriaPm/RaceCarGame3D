@@ -46,6 +46,10 @@ update_status ModuleSceneIntro::Update(float dt)
 	// Enable/Disable player's camera linked to car
 	if (App->input->GetKey(SDL_SCANCODE_C) == KEY_DOWN)
 		isCameraFixed = !isCameraFixed;
+	
+	// Reset Scene
+	if (App->input->GetKey(SDL_SCANCODE_Z) == KEY_DOWN)
+		ResetScene(dt);
 
 
 	// Player's Camera linked to car
@@ -156,6 +160,9 @@ void ModuleSceneIntro::createRoadCircuit()
 	addCubeToMap({ -85, 1, 45 }, { 120, 2, 2 }, Grey, 0, false, false, false);
 	addCubeToMap({ -25, 1, 46.5 }, { 2, 2, 7 }, Grey, 0, false, false, false);
 
+	//Water
+	addCheckpoint({ -85, 1, 12 }, { 120, 0.50f, 65 }, Blue, 0, false, false, false, 6);
+
 	//Rocks
 	addRock({ 0,-5,80 }, 0);
 	addRock({ -10,-5,145 }, 0);
@@ -183,17 +190,17 @@ void ModuleSceneIntro::createRoadCircuit()
 
 void ModuleSceneIntro::createCheckpoints() {
 	//Lap1
-	addCheckpoint({ 0, 1, 50 }, { 50, 1, 1 }, Black, 0, false, false, false, 1, false);
-	addCheckpoint({ 0, 1, 150 }, { 50, 1, 1 }, Black, 0, false, false, false, 2, false);
-	addCheckpoint({ -165, 1, 195 }, { 50, 1, 1 }, Black, 40, false, true, false, 3, false);
-	addCheckpoint({ -167, 1, 70 }, { 45, 1, 1 }, Black, 0, false, false, false, 4, false);
+	addCheckpoint({ 0, 1, 50 }, { 50, 1, 1 }, Purple, 0, false, false, false, 1, false);
+	addCheckpoint({ 0, 1, 150 }, { 50, 1, 1 }, Yellow, 0, false, false, false, 2, false);
+	addCheckpoint({ -165, 1, 195 }, { 50, 1, 1 }, Blue, 40, false, true, false, 3, false);
+	addCheckpoint({ -167, 1, 50 }, { 45, 1, 1 }, Orange, 0, false, false, false, 4, false);
 	addCheckpoint({ -90, 1, 10 }, { 70, 1, 1 }, Black, 90, false, true, false, 5, false);
 }
 
 void ModuleSceneIntro::createGround() {
 	Cube groundToAdd;
 
-	float groundTerrainSize = 25;	// Change this value to increase/decrease basic ground size
+	float groundTerrainSize = 40;	// Change this value to increase/decrease basic ground size
 
 	groundToAdd.size = { groundTerrainSize, 1, groundTerrainSize };
 
@@ -218,6 +225,27 @@ void ModuleSceneIntro::createGround() {
 			}
 		}
 	}
+}
+
+void ModuleSceneIntro::addCubeSensorToMap(vec3 pos, vec3 size, Color rgb, int angle, bool rot_X, bool rot_Y, bool rot_Z, int id)
+{
+	Cube cube;
+
+	cube.SetPos(pos.x, pos.y, pos.z);
+	cube.size = size;
+	cube.color = rgb;
+
+	if (rot_X == true) 
+		cube.SetRotation(angle, { 1, 0, 0 });	// X-axis
+	if (rot_Y == true)
+		cube.SetRotation(angle, { 0, 1, 0 });	// Y-axis
+	if (rot_Z == true)
+		cube.SetRotation(angle, { 0, 0, 1 });	// Z-axis
+
+	PhysBody3D* sensor_cube = App->physics->AddBody(cube, 0);
+	sensor_cube->SetAsSensor(true);
+	sensor_cube->id = id;
+	smallCubes.add(cube);
 }
 
 void ModuleSceneIntro::addCubeToMap(vec3 pos, vec3 size, Color rgb, int angle, bool rot_X, bool rot_Y, bool rot_Z)
@@ -261,6 +289,9 @@ void ModuleSceneIntro::addCheckpoint(vec3 pos, vec3 size, Color rgb, int angle, 
 	checkpoint.cube = cube;
 	checkpoint.passed = passed_;
 	checkPointList.add(checkpoint);
+
+	if (id == 6)
+		water = checkpoint;
 }
 
 void ModuleSceneIntro::addRock(vec3 position, float angle) 
@@ -309,4 +340,27 @@ void ModuleSceneIntro::addRock(vec3 position, float angle)
 
 	rocks.add(rock);
 
+}
+
+void ModuleSceneIntro::ResetScene(float dt)
+{
+	App->player->resetCarPos();
+	
+	float timer = 0;
+	while (timer < 150) {
+		timer+=1*dt;
+		LOG("TIMERRRRRR: %float", timer);
+	}
+
+	// Draw Checkpoints
+	p2List_item<CheckPoint>* checkReset = checkPointList.getFirst();
+	while (checkReset != NULL) {
+
+		checkReset->data.passed = false;
+
+		checkReset = checkReset->next;
+	}
+
+	App->player->checkpointCount = 0;
+	App->player->gameTimer = 120;
 }
