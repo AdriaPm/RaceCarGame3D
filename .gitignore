@@ -81,3 +81,4 @@ ipch/
 *.db
 *.opendb
 packages/
+*.db
