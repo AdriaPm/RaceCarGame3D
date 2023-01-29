@@ -11,6 +11,13 @@
 struct PhysBody3D;
 struct PhysMotor3D;
 
+struct Rocks
+{
+	vec3 pos;
+	PhysBody3D* b1, *b2, *b3;
+	Cube c1, c2, c3;
+};
+
 class ModuleSceneIntro : public Module
 {
 public:
@@ -32,6 +39,7 @@ public:
 	// Geometry shapes
 	void addCubeToMap(vec3 pos, vec3 size, Color rgb, int angle = 0, bool rot_X = false, bool rot_Y = false, bool rot_Z = false);
 	void addCubeSensorToMap(vec3 pos, vec3 size, Color rgb, int angle = 0, bool rot_X = false, bool rot_Y = false, bool rot_Z = false);
+	void addRock(vec3 position, float angle);
 
 public:
 	/*
@@ -44,6 +52,7 @@ public:
 
 	p2List<Cube> smallCubes;
 	p2List<Cube> sensorLapCubes;
+	p2List<Rocks> rocks;
 
 	PhysBody3D* pb_chassis;
 	Cube p_chassis;

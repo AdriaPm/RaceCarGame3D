@@ -1,9 +1,13 @@
-
 #include "Globals.h"
 #include <gl/GL.h>
 #include <gl/GLU.h>
 #include "Primitive.h"
 #include "glut/glut.h"
+#include "PhysBody3D.h"
+#include "glmath.h"
+#include <cmath>
+
+#include "Bullet/include/btBulletDynamicsCommon.h"
 
 #pragma comment (lib, "glut/glut32.lib")
 
@@ -97,6 +101,17 @@ void Primitive::SetRotation(float angle, const vec3 &u)
 void Primitive::Scale(float x, float y, float z)
 {
 	transform.scale(x, y, z);
+}
+
+void Primitive::SetEulerRotation(btQuaternion q)
+{
+	float x = q.getX() / sqrt(1 - q.getW() * q.getW());
+	float y = q.getY() / sqrt(1 - q.getW() * q.getW());
+	float z = q.getZ() / sqrt(1 - q.getW() * q.getW());
+
+	float angle = 2 * acos(q.getW());
+
+	transform.rotate(angle, { x,y,z });
 }
 
 // CUBE ============================================

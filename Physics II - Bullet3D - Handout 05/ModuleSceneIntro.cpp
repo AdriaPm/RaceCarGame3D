@@ -61,6 +61,24 @@ update_status ModuleSceneIntro::Update(float dt)
 		c = c->next;
 	}
 
+	//Draw rocks
+	p2List_item<Rocks>* d = rocks.getFirst();
+	while (d != NULL) {
+		d->data.c1.SetPos(d->data.b1->GetPos().getX(), d->data.b1->GetPos().getY(), d->data.b1->GetPos().getZ());
+		d->data.c1.SetEulerRotation(d->data.b1->GetRotation());
+		d->data.c1.Render();
+
+		d->data.c2.SetPos(d->data.b2->GetPos().getX(), d->data.b2->GetPos().getY(), d->data.b2->GetPos().getZ());
+		d->data.c2.SetEulerRotation(d->data.b2->GetRotation());
+		d->data.c2.Render();
+
+		d->data.c3.SetPos(d->data.b3->GetPos().getX(), d->data.b3->GetPos().getY(), d->data.b3->GetPos().getZ());
+		d->data.c3.SetEulerRotation(d->data.b3->GetRotation());
+		d->data.c3.Render();
+		d = d->next;
+	}
+
+
 	return UPDATE_CONTINUE;
 }
 
@@ -123,6 +141,27 @@ void ModuleSceneIntro::createRoadCircuit()
 	addCubeToMap({ -85, 1, 45 }, { 120, 2, 2 }, Grey, 0, false, false, false);
 	addCubeToMap({ -25, 1, 46.5 }, { 2, 2, 7 }, Grey, 0, false, false, false);
 
+	//Rocks
+	addRock({ 0,-5,80 }, 0);
+	addRock({ -10,-5,145 }, 0);
+	addRock({ -40,-5,175 }, 0);
+	addRock({ -75,-5,185 }, 0);
+	addRock({ -100,-5,190 }, 0);
+	addRock({ -165,-5,190 }, 0);
+	addRock({ -170,-5,165 }, 0);
+	addRock({ -163,-5, 125 }, 0);
+	addRock({ -163,-5, 100 }, 0);
+	addRock({ -168,-5, 75 }, 0);
+	addRock({ -162,-5, 45 }, 0);
+	addRock({ -160,-5, 25 }, 0);
+	addRock({ -145,-5, 10 }, 0);
+	addRock({ -120,-5, 5 }, 0);
+	addRock({ -90,-5, 2 }, 0);
+	addRock({ -55,-5, 7 }, 0);
+	addRock({ -55,-5, 20 }, 0);
+	addRock({ -35,-5, 15 }, 0);
+	addRock({ -15,0, 25 }, 0);
+
 }
 
 
@@ -153,7 +192,7 @@ void ModuleSceneIntro::createGround() {
 			switch (groundCoordinates[i][j])
 			{
 			case 0:
-				groundToAdd.color = Orange;	// Ground color
+				groundToAdd.color = White;	// Ground color
 
 				App->physics->AddBody(groundToAdd, 0);
 				smallCubes.add(groundToAdd);
@@ -201,4 +240,51 @@ void ModuleSceneIntro::addCubeSensorToMap(vec3 pos, vec3 size, Color rgb, int an
 	PhysBody3D* cube_sensor = App->physics->AddBody(cube, 0);
 	cube_sensor->SetAsSensor(true);
 	sensorLapCubes.add(cube);
+}
+
+void ModuleSceneIntro::addRock(vec3 position, float angle) 
+{
+	Cube cube1, cube2, cube3;
+	
+	// Cube 1
+	cube1.size = { 2, 2, 2 };
+	cube1.SetPos(position.x, position.y, position.z);
+	cube1.SetRotation(angle, { 0, 1, 0 });
+	cube1.color = DarkGrey;
+
+	// Cube 2
+	cube2.size = { 2, 2, 3 };
+	cube2.SetPos(position.x, position.y, position.z);
+	cube2.SetRotation(angle, { 0, 1, 0 });
+	cube2.color = DarkGrey;
+
+	// Cube 3
+	cube3.size = { 3, 3, 3 };
+	cube3.SetPos(position.x, position.y, position.z);
+	cube3.SetRotation(angle, { 0, 1, 0 });
+	cube3.color = DarkGrey;
+
+	btTransform frameA;
+	frameA.getBasis().setEulerZYX(0, 0, M_PI / 2);
+	frameA.setOrigin(btVector3(0, 0, 0));
+
+	btTransform frameB;
+	frameB.getBasis().setEulerZYX(0, 0, M_PI / 2);
+	frameB.setOrigin(btVector3(0, 0, 0));
+
+	Rocks rock;
+	rock.c1 = cube1;
+	rock.c2 = cube2;
+	rock.c3 = cube3;
+	rock.b1 = App->physics->AddBody(rock.c1, 1);
+	rock.b2 = App->physics->AddBody(rock.c2, 1);
+	rock.b3 = App->physics->AddBody(rock.c3, 1);
+	rock.pos = position;
+
+	// Add rocks as SLIDER Constrains
+	App->physics->AddConstraintSlider(*rock.b1, *rock.b2, frameA, frameB);
+	App->physics->AddConstraintSlider(*rock.b1, *rock.b3, frameA, frameB);
+	App->physics->AddConstraintSlider(*rock.b2, *rock.b3, frameA, frameB);
+
+	rocks.add(rock);
 }
