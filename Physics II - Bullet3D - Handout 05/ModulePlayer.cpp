@@ -114,11 +114,11 @@ bool ModulePlayer::Start()
 
 	// Car properties ----------------------------------------
 	car.mass = 600.0f;
-	car.suspensionStiffness = 150.0f;
-	car.suspensionCompression = 1.5f;
+	car.suspensionStiffness = 15.0f;
+	car.suspensionCompression = .83f;
 	car.suspensionDamping = 10.0f;
-	car.maxSuspensionTravelCm = 500.0f;
-	car.frictionSlip = 0.3f;
+	car.maxSuspensionTravelCm = 1000.0f;
+	car.frictionSlip = 50.5f;
 	car.maxSuspensionForce = 6000.0f;
 
 	// Wheel properties ---------------------------------------
@@ -230,7 +230,7 @@ update_status ModulePlayer::Update(float dt)
 		{
 			if (vehicle->GetKmh() < MAX_VELOCITY_TURBO) 
 			{
-				acceleration = MAX_ACCELERATION * 100000;
+				acceleration = MAX_ACCELERATION * 2;
 				if (isTurboSFXPlayed == false) {
 					App->audio->PlayFx(turboSFX);
 					isTurboSFXPlayed = true;

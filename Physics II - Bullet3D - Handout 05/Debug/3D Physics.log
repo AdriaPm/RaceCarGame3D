@@ -1,35 +1,5 @@
-﻿  Application.cpp
-C:\Users\adria\Documents\GitHub\RaceCarGame3D\Physics II - Bullet3D - Handout 05\Application.cpp(12,33): warning C4316: 'ModulePlayer': puede que el objeto asignado en el montón no esté alineado 16
-  Main.cpp
-  ModuleAudio.cpp
-  ModuleCamera3D.cpp
-  ModuleInput.cpp
-  ModulePhysics3D.cpp
-C:\Users\adria\Documents\GitHub\RaceCarGame3D\Physics II - Bullet3D - Handout 05\ModulePhysics3D.cpp(138,26): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\adria\Documents\GitHub\RaceCarGame3D\Physics II - Bullet3D - Handout 05\ModulePhysics3D.cpp(142,26): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-  ModulePlayer.cpp
+﻿  ModulePlayer.cpp
 C:\Users\adria\Documents\GitHub\RaceCarGame3D\Physics II - Bullet3D - Handout 05\ModulePlayer.cpp(41,42): warning C4305: 'argumento': truncamiento de 'double' a 'float'
 C:\Users\adria\Documents\GitHub\RaceCarGame3D\Physics II - Bullet3D - Handout 05\ModulePlayer.cpp(45,43): warning C4305: 'argumento': truncamiento de 'double' a 'float'
 C:\Users\adria\Documents\GitHub\RaceCarGame3D\Physics II - Bullet3D - Handout 05\ModulePlayer.cpp(53,44): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-  ModuleRenderer3D.cpp
-  ModuleSceneIntro.cpp
-C:\Users\adria\Documents\GitHub\RaceCarGame3D\Physics II - Bullet3D - Handout 05\ModuleSceneIntro.cpp(161,20): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\adria\Documents\GitHub\RaceCarGame3D\Physics II - Bullet3D - Handout 05\ModuleSceneIntro.cpp(163,20): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\adria\Documents\GitHub\RaceCarGame3D\Physics II - Bullet3D - Handout 05\ModuleSceneIntro.cpp(165,20): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-  ModuleWindow.cpp
-  Generando código...
-BulletDynamics_debug.lib(btDiscreteDynamicsWorld.obj) : warning LNK4099: no se encontró PDB 'vc140.pdb' con 'BulletDynamics_debug.lib(btDiscreteDynamicsWorld.obj)' o en 'C:\Users\adria\Documents\GitHub\RaceCarGame3D\Physics II - Bullet3D - Handout 05\Debug\vc140.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
-BulletDynamics_debug.lib(btConeTwistConstraint.obj) : warning LNK4099: no se encontró PDB 'vc140.pdb' con 'BulletDynamics_debug.lib(btConeTwistConstraint.obj)' o en 'C:\Users\adria\Documents\GitHub\RaceCarGame3D\Physics II - Bullet3D - Handout 05\Debug\vc140.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
-BulletDynamics_debug.lib(btContactConstraint.obj) : warning LNK4099: no se encontró PDB 'vc140.pdb' con 'BulletDynamics_debug.lib(btContactConstraint.obj)' o en 'C:\Users\adria\Documents\GitHub\RaceCarGame3D\Physics II - Bullet3D - Handout 05\Debug\vc140.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
-BulletDynamics_debug.lib(btGeneric6DofConstraint.obj) : warning LNK4099: no se encontró PDB 'vc140.pdb' con 'BulletDynamics_debug.lib(btGeneric6DofConstraint.obj)' o en 'C:\Users\adria\Documents\GitHub\RaceCarGame3D\Physics II - Bullet3D - Handout 05\Debug\vc140.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
-BulletDynamics_debug.lib(btHingeConstraint.obj) : warning LNK4099: no se encontró PDB 'vc140.pdb' con 'BulletDynamics_debug.lib(btHingeConstraint.obj)' o en 'C:\Users\adria\Documents\GitHub\RaceCarGame3D\Physics II - Bullet3D - Handout 05\Debug\vc140.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
-BulletDynamics_debug.lib(btPoint2PointConstraint.obj) : warning LNK4099: no se encontró PDB 'vc140.pdb' con 'BulletDynamics_debug.lib(btPoint2PointConstraint.obj)' o en 'C:\Users\adria\Documents\GitHub\RaceCarGame3D\Physics II - Bullet3D - Handout 05\Debug\vc140.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
-BulletDynamics_debug.lib(btTypedConstraint.obj) : warning LNK4099: no se encontró PDB 'vc140.pdb' con 'BulletDynamics_debug.lib(btTypedConstraint.obj)' o en 'C:\Users\adria\Documents\GitHub\RaceCarGame3D\Physics II - Bullet3D - Handout 05\Debug\vc140.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
-BulletDynamics_debug.lib(btRaycastVehicle.obj) : warning LNK4099: no se encontró PDB 'vc140.pdb' con 'BulletDynamics_debug.lib(btRaycastVehicle.obj)' o en 'C:\Users\adria\Documents\GitHub\RaceCarGame3D\Physics II - Bullet3D - Handout 05\Debug\vc140.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
-BulletCollision_debug.lib(btCollisionWorld.obj) : warning LNK4099: no se encontró PDB 'vc140.pdb' con 'BulletCollision_debug.lib(btCollisionWorld.obj)' o en 'C:\Users\adria\Documents\GitHub\RaceCarGame3D\Physics II - Bullet3D - Handout 05\Debug\vc140.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
-BulletCollision_debug.lib(btBoxShape.obj) : warning LNK4099: no se encontró PDB 'vc140.pdb' con 'BulletCollision_debug.lib(btBoxShape.obj)' o en 'C:\Users\adria\Documents\GitHub\RaceCarGame3D\Physics II - Bullet3D - Handout 05\Debug\vc140.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
-BulletCollision_debug.lib(btCylinderShape.obj) : warning LNK4099: no se encontró PDB 'vc140.pdb' con 'BulletCollision_debug.lib(btCylinderShape.obj)' o en 'C:\Users\adria\Documents\GitHub\RaceCarGame3D\Physics II - Bullet3D - Handout 05\Debug\vc140.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
-BulletCollision_debug.lib(btSphereShape.obj) : warning LNK4099: no se encontró PDB 'vc140.pdb' con 'BulletCollision_debug.lib(btSphereShape.obj)' o en 'C:\Users\adria\Documents\GitHub\RaceCarGame3D\Physics II - Bullet3D - Handout 05\Debug\vc140.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
-BulletCollision_debug.lib(btContinuousConvexCollision.obj) : warning LNK4099: no se encontró PDB 'vc140.pdb' con 'BulletCollision_debug.lib(btContinuousConvexCollision.obj)' o en 'C:\Users\adria\Documents\GitHub\RaceCarGame3D\Physics II - Bullet3D - Handout 05\Debug\vc140.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
-LinearMath_debug.lib(btConvexHullComputer.obj) : warning LNK4099: no se encontró PDB 'vc140.pdb' con 'LinearMath_debug.lib(btConvexHullComputer.obj)' o en 'C:\Users\adria\Documents\GitHub\RaceCarGame3D\Physics II - Bullet3D - Handout 05\Debug\vc140.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
   3D Physics.vcxproj -> C:\Users\adria\Documents\GitHub\RaceCarGame3D\Physics II - Bullet3D - Handout 05\Debug\3D Physics - class5.exe
