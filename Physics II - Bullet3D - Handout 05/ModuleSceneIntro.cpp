@@ -21,8 +21,10 @@ bool ModuleSceneIntro::Start()
 	// Create world ground
 	createGround();
 
-	/*App->camera->Move(vec3(1.0f, 1.0f, 0.0f));
-	App->camera->LookAt(vec3(0, 0, 0));*/
+	// Create circuit's road curse
+	createRoadCircuit();
+
+
 
 	return ret;
 }
@@ -95,6 +97,16 @@ void ModuleSceneIntro::PlayerCamera() {
 
 }
 
+void ModuleSceneIntro::createRoadCircuit()
+{
+	addCubeToMap({ 0, 1, 100 }, { 50, 2, 30 }, White, -10, true, false, false);
+
+
+
+}
+
+
+
 void ModuleSceneIntro::createGround() {
 	Cube groundToAdd;
 
@@ -123,4 +135,23 @@ void ModuleSceneIntro::createGround() {
 			}
 		}
 	}
+}
+
+void ModuleSceneIntro::addCubeToMap(vec3 pos, vec3 size, Color rgb, int angle, bool rot_X, bool rot_Y, bool rot_Z)
+{
+	Cube cube;
+
+	cube.SetPos(pos.x, pos.y, pos.z);
+	cube.size = size;
+	cube.color = rgb;
+
+	if (rot_X == true) 
+		cube.SetRotation(angle, { 1, 0, 0 });	// X-axis
+	if (rot_Y == true)
+		cube.SetRotation(angle, { 0, 1, 0 });	// Y-axis
+	if (rot_Z == true)
+		cube.SetRotation(angle, { 0, 0, 1 });	// Z-axis
+
+	App->physics->AddBody(cube, 0);
+	smallCubes.add(cube);
 }

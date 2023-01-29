@@ -234,6 +234,7 @@ update_status ModulePlayer::Update(float dt)
 	if(App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
 	{
 		brake = BRAKE_POWER;
+
 	}
 
 	// Car Jumping
@@ -253,6 +254,12 @@ update_status ModulePlayer::Update(float dt)
 		}
 	}
 
+	// Reset/Respawn car
+	if (App->input->GetKey(SDL_SCANCODE_Q) == KEY_DOWN)
+	{
+		resetCarPos();
+	}
+
 
 	vehicle->ApplyEngineForce(acceleration);
 	vehicle->Turn(turn);
@@ -268,6 +275,14 @@ update_status ModulePlayer::Update(float dt)
 	App->window->SetTitle(title);
 
 	return UPDATE_CONTINUE;
+}
+
+void ModulePlayer::resetCarPos()
+{
+	vehicle->SetPos(initialPosition.x, initialPosition.y, initialPosition.z);
+	vehicle->SetAngularVelocity(0, 0, 0);
+	vehicle->SetLinearVelocity(0, 0, 0);
+	vehicle->ResetCarOrientation();
 }
 
 vec3 ModulePlayer::GetVehicleForwardVector() 

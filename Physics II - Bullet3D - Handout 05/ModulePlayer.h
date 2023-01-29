@@ -21,11 +21,14 @@ public:
 
 	vec3 GetVehicleForwardVector();
 
+	void resetCarPos();
+
 public:
 
 	PhysVehicle3D* vehicle;
 	float turn;
 	float acceleration;
+	float backwardsAcceleration;
 	float brake;
 
 	btVector3 position;

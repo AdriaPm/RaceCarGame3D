@@ -26,6 +26,10 @@ public:
 	void PlayerCamera();
 
 	void createGround();
+	void createRoadCircuit();
+
+	// Geometry shapes
+	void addCubeToMap(vec3 pos, vec3 size, Color rgb, int angle = 0, bool rot_X = false, bool rot_Y = false, bool rot_Z = false);
 
 public:
 	/*
