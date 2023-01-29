@@ -102,16 +102,25 @@ void ModuleSceneIntro::PlayerCamera() {
 void ModuleSceneIntro::createRoadCircuit()
 {
 
+	//Rampa
 	addCubeToMap({ 0, 1, 100 }, { 50, 2, 30 }, White, -10, true, false, false);
+	//Left
 	addCubeToMap({ 25, 1, 100 }, { 2, 2, 100 }, Grey, 0, false, false, false);
-	addCubeToMap({ -25, 1, 100 }, { 2, 2, 100 }, Grey, 0, false, false, false);
 	addCubeToMap({ 10, 1, 165 }, { 2, 2, 50 }, Grey, -45, false, true, false);
-	addCubeToMap({ -40, 1, 165 }, { 2, 2, 50 }, Grey, -45, false, true, false);
 	addCubeToMap({ -15, 1, 190 }, { 2, 2, 50 }, Grey, -45, false, true, false);
-	addCubeToMap({ -100, 1, 180 }, { 100, 2, 2 }, Grey, 0, false, false, false);
 	addCubeToMap({ -75, 1, 210 }, { 100, 2, 2 }, Grey, 0, false, false, false);
-	
+	addCubeToMap({ -190, 1, 100 }, { 250, 2, 2 }, Grey, 90, false, true, false);
+	addCubeToMap({ -90, 1, -20 }, { 2, 2, 200 }, Grey, 90, false, true, false);
+	addCubeToMap({ 10, 1, 0 }, { 2, 2, 50 }, Grey, 55, false, true, false);
+	addCubeToMap({ 25, 1, 25 }, { 2, 2, 50 }, Grey, 0, false, true, false);
+	//Right
+	addCubeToMap({ -25, 1, 100 }, { 2, 2, 100 }, Grey, 0, false, false, false);
+	addCubeToMap({ -40, 1, 165 }, { 2, 2, 50 }, Grey, -45, false, true, false);
+	addCubeToMap({ -100, 1, 180 }, { 100, 2, 2 }, Grey, 0, false, false, false);
 	addCubeToMap({ -145, 1, 210 }, { 100, 2, 2 }, Grey, 0, false, false, false);
+
+	addCubeToMap({ -145, 1, 130 }, { 100, 2, 2 }, Grey, 90, false, true, false);
+	//addCubeToMap({ , 1, }, { 100, 2, 2 }, Grey, 0, false, false, false);
 
 
 
