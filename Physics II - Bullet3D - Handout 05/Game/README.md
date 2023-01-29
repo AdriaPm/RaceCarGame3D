@@ -7,7 +7,7 @@ Simple 3D racing car game created for Physics II subject at CITM-UPC university.
 ## Controls
 
 - {ARROWS} - Move F1 vehicle
-- {SPACEBAR} - Jump
+- {SPACEBAR} - Jump (only in DebugMode)
 - {SHIFT} - Turbo
 - {Q} - Respawn to initial position
 - {C} - Enable/Disable free camera movement

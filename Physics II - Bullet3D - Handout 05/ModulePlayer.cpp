@@ -289,10 +289,13 @@ update_status ModulePlayer::Update(float dt)
 
 	}
 
-	// Car Jumping
-	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) 
+	if (App->physics->debug == true)
 	{
-		vehicle->Push(0, 3000, 0);
+		// Car Jumping
+		if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
+		{
+			vehicle->Push(0, 3000, 0);
+		}
 	}
 
 	// Brake if there's no throttle

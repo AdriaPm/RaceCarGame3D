@@ -120,8 +120,12 @@ void ModuleSceneIntro::PlayerCamera() {
 void ModuleSceneIntro::createRoadCircuit()
 {
 
-	//Rampa
+	//Rampa 1
 	addCubeToMap({ 0, 1, 100 }, { 50, 2, 30 }, White, -10, true, false, false);
+
+	//Rampa 2
+	addCubeToMap({ -168, 1, 75 }, { 45, 2, 30 }, White, 10, true, false, false);
+
 	//Left
 	addCubeToMap({ 25, 1, 100 }, { 2, 2, 100 }, Grey, 0, false, false, false);
 	addCubeToMap({ 10, 1, 165 }, { 2, 2, 50 }, Grey, -45, false, true, false);
