@@ -3,6 +3,7 @@
 ## Description
 
 Simple 3D racing car game created for Physics II subject at CITM-UPC university.
+The goal of the game is to pick up all the different checkpoint before time runs up.
 
 ## Controls
 
