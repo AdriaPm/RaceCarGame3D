@@ -24,6 +24,8 @@ public:
 
 	vec3 GetVehicleForwardVector();
 
+	void OnCollision(PhysBody3D* body1, PhysBody3D* body2);
+
 	void resetCarPos();
 
 public:
@@ -45,6 +47,8 @@ public:
 	int laps = 0;
 
 private:
+
+	int checkpointCount = 0;
 
 	uint turboSFX = 0;
 	bool isTurboSFXPlayed = false;

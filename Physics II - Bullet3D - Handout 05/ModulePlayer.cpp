@@ -366,6 +366,38 @@ update_status ModulePlayer::Update(float dt)
 	return UPDATE_CONTINUE;
 }
 
+void ModulePlayer::OnCollision(PhysBody3D* body1, PhysBody3D* body2)
+{
+	p2List_item<CheckPoint>* checkItem = App->scene_intro->checkPointList.getFirst();
+	while (checkItem != NULL) {
+		if (checkItem->data.body->id == body2->id)
+			checkItem->data.passed = true;
+		checkItem = checkItem->next;
+	}
+	/*switch (body2->id)
+	{
+	case 1:
+		App->scene_intro->checkPointList.getFirst()->data.passed = true;
+		break;
+	case 2:
+		p2List_item<CheckPoint>* checkItem = App->scene_intro->checkPointList.getFirst();
+		while (checkItem != NULL) {
+			if (checkItem->data.body->id == body2->id)
+				checkItem->data.passed = true;
+			checkItem = checkItem->next;
+		}
+		break;
+	case 3:
+		p2List_item<CheckPoint>* checkItem = App->scene_intro->checkPointList.getFirst();
+		while (checkItem != NULL) {
+			if (checkItem->data.body->id == body2->id)
+				checkItem->data.passed = true;
+			checkItem = checkItem->next;
+		}
+		break;
+	}*/
+}
+
 void ModulePlayer::resetCarPos()
 {
 	vehicle->SetPos(initialPosition.x, initialPosition.y, initialPosition.z);

@@ -3,6 +3,7 @@
 #include "ModuleSceneIntro.h"
 #include "Primitive.h"
 #include "PhysBody3D.h"
+#include "ModulePhysics3D.h"
 
 ModuleSceneIntro::ModuleSceneIntro(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
@@ -26,7 +27,7 @@ bool ModuleSceneIntro::Start()
 	// Create circuit's road curse
 	createRoadCircuit();
 
-	createLapSensors();
+	createCheckpoints();
 
 	return ret;
 }
@@ -59,6 +60,16 @@ update_status ModuleSceneIntro::Update(float dt)
 	while (c != NULL) {
 		c->data.Render();
 		c = c->next;
+	}
+	
+	// Draw Checkpoints
+	p2List_item<CheckPoint>* checkItem = checkPointList.getFirst();
+	while (checkItem != NULL) {
+
+		if (checkItem->data.passed == false) {
+			checkItem->data.cube.Render();
+		}
+		checkItem = checkItem->next;
 	}
 
 	//Draw rocks
@@ -170,11 +181,13 @@ void ModuleSceneIntro::createRoadCircuit()
 
 
 
-void ModuleSceneIntro::createLapSensors() {
+void ModuleSceneIntro::createCheckpoints() {
 	//Lap1
-	addCubeSensorToMap({ 0, 1, 50 }, { 50, 1, 1 }, Black, 0, false, false, false);
-	addCubeSensorToMap({ 0, 1, 150 }, { 50, 1, 1 }, Black, 0, false, false, false);
-	addCubeSensorToMap({ -150, 1, 210 }, { 50, 1, 1 }, Black, 45, false, true, false);
+	addCheckpoint({ 0, 1, 50 }, { 50, 1, 1 }, Black, 0, false, false, false, 1, false);
+	addCheckpoint({ 0, 1, 150 }, { 50, 1, 1 }, Black, 0, false, false, false, 2, false);
+	addCheckpoint({ -165, 1, 195 }, { 50, 1, 1 }, Black, 40, false, true, false, 3, false);
+	addCheckpoint({ -167, 1, 70 }, { 45, 1, 1 }, Black, 0, false, false, false, 4, false);
+	addCheckpoint({ -90, 1, 10 }, { 70, 1, 1 }, Black, 90, false, true, false, 5, false);
 }
 
 void ModuleSceneIntro::createGround() {
@@ -226,7 +239,7 @@ void ModuleSceneIntro::addCubeToMap(vec3 pos, vec3 size, Color rgb, int angle, b
 	smallCubes.add(cube);
 }
 
-void ModuleSceneIntro::addCubeSensorToMap(vec3 pos, vec3 size, Color rgb, int angle, bool rot_X, bool rot_Y, bool rot_Z)
+void ModuleSceneIntro::addCheckpoint(vec3 pos, vec3 size, Color rgb, int angle, bool rot_X, bool rot_Y, bool rot_Z, int id, bool passed_)
 {
 	Cube cube;
 
@@ -241,9 +254,13 @@ void ModuleSceneIntro::addCubeSensorToMap(vec3 pos, vec3 size, Color rgb, int an
 	if (rot_Z == true)
 		cube.SetRotation(angle, { 0, 0, 1 });	// Z-axis
 
-	PhysBody3D* cube_sensor = App->physics->AddBody(cube, 0);
-	cube_sensor->SetAsSensor(true);
-	sensorLapCubes.add(cube);
+	CheckPoint checkpoint;
+	checkpoint.body = App->physics->AddBody(cube, 0.0f);
+	checkpoint.body->SetAsSensor(true);
+	checkpoint.body->SetId(id);
+	checkpoint.cube = cube;
+	checkpoint.passed = passed_;
+	checkPointList.add(checkpoint);
 }
 
 void ModuleSceneIntro::addRock(vec3 position, float angle) 
@@ -291,4 +308,5 @@ void ModuleSceneIntro::addRock(vec3 position, float angle)
 	App->physics->AddConstraintSlider(*rock.b2, *rock.b3, frameA, frameB);
 
 	rocks.add(rock);
+
 }

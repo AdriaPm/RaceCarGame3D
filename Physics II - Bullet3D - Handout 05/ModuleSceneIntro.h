@@ -11,11 +11,19 @@
 struct PhysBody3D;
 struct PhysMotor3D;
 
+
 struct Rocks
 {
 	vec3 pos;
-	PhysBody3D* b1, *b2, *b3;
+	PhysBody3D* b1, * b2, * b3;
 	Cube c1, c2, c3;
+};
+
+struct CheckPoint 
+{
+	PhysBody3D* body;
+	Cube cube;
+	bool passed;
 };
 
 class ModuleSceneIntro : public Module
@@ -34,12 +42,12 @@ public:
 
 	void createGround();
 	void createRoadCircuit();
-	void createLapSensors();
+	void createCheckpoints();
 
 	// Geometry shapes
 	void addCubeToMap(vec3 pos, vec3 size, Color rgb, int angle = 0, bool rot_X = false, bool rot_Y = false, bool rot_Z = false);
-	void addCubeSensorToMap(vec3 pos, vec3 size, Color rgb, int angle = 0, bool rot_X = false, bool rot_Y = false, bool rot_Z = false);
 	void addRock(vec3 position, float angle);
+	void addCheckpoint(vec3 pos, vec3 size, Color rgb, int angle = 0, bool rot_X = false, bool rot_Y = false, bool rot_Z = false, int id = -1, bool passed_ = false);
 
 public:
 	/*
@@ -51,8 +59,8 @@ public:
 	*/
 
 	p2List<Cube> smallCubes;
-	p2List<Cube> sensorLapCubes;
 	p2List<Rocks> rocks;
+	p2List<CheckPoint> checkPointList;
 
 	PhysBody3D* pb_chassis;
 	Cube p_chassis;
