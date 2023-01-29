@@ -1,1 +1,5 @@
-﻿  3D Physics.vcxproj -> D:\Arnau\UPC CITM\physics\RaceCarGame3D\Physics II - Bullet3D - Handout 05\Debug\3D Physics - class5.exe
+﻿  ModulePlayer.cpp
+D:\Arnau\UPC CITM\physics\RaceCarGame3D\Physics II - Bullet3D - Handout 05\ModulePlayer.cpp(41,42): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\Arnau\UPC CITM\physics\RaceCarGame3D\Physics II - Bullet3D - Handout 05\ModulePlayer.cpp(45,43): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\Arnau\UPC CITM\physics\RaceCarGame3D\Physics II - Bullet3D - Handout 05\ModulePlayer.cpp(53,44): warning C4305: 'argument': truncation from 'double' to 'float'
+  3D Physics.vcxproj -> D:\Arnau\UPC CITM\physics\RaceCarGame3D\Physics II - Bullet3D - Handout 05\Debug\3D Physics - class5.exe

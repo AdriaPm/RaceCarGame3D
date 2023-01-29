@@ -26,7 +26,7 @@ bool ModuleSceneIntro::Start()
 	// Create circuit's road curse
 	createRoadCircuit();
 
-
+	createLapSensors();
 
 	return ret;
 }
@@ -127,6 +127,13 @@ void ModuleSceneIntro::createRoadCircuit()
 
 
 
+void ModuleSceneIntro::createLapSensors() {
+	//Lap1
+	addCubeSensorToMap({ 0, 1, 50 }, { 50, 1, 1 }, Black, 0, false, false, false);
+	addCubeSensorToMap({ 0, 1, 150 }, { 50, 1, 1 }, Black, 0, false, false, false);
+	addCubeSensorToMap({ -150, 1, 210 }, { 50, 1, 1 }, Black, 45, false, true, false);
+}
+
 void ModuleSceneIntro::createGround() {
 	Cube groundToAdd;
 
@@ -174,4 +181,24 @@ void ModuleSceneIntro::addCubeToMap(vec3 pos, vec3 size, Color rgb, int angle, b
 
 	App->physics->AddBody(cube, 0);
 	smallCubes.add(cube);
+}
+
+void ModuleSceneIntro::addCubeSensorToMap(vec3 pos, vec3 size, Color rgb, int angle, bool rot_X, bool rot_Y, bool rot_Z)
+{
+	Cube cube;
+
+	cube.SetPos(pos.x, pos.y, pos.z);
+	cube.size = size;
+	cube.color = rgb;
+
+	if (rot_X == true) 
+		cube.SetRotation(angle, { 1, 0, 0 });	// X-axis
+	if (rot_Y == true)
+		cube.SetRotation(angle, { 0, 1, 0 });	// Y-axis
+	if (rot_Z == true)
+		cube.SetRotation(angle, { 0, 0, 1 });	// Z-axis
+
+	PhysBody3D* cube_sensor = App->physics->AddBody(cube, 0);
+	cube_sensor->SetAsSensor(true);
+	sensorLapCubes.add(cube);
 }

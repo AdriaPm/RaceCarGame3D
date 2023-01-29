@@ -192,6 +192,9 @@ bool ModulePlayer::Start()
 	vehicle->collision_listeners.add(this);
 	vehicle->SetId(1);
 
+	gameTimer = 250;
+	laps = 0;
+
 	return true;
 }
 
@@ -265,7 +268,20 @@ update_status ModulePlayer::Update(float dt)
 	// Brake
 	if(App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
 	{
-		brake = BRAKE_POWER;
+	
+		if (vehicle->GetKmh() >= 0) {
+			brake = BRAKE_POWER;
+		}
+
+		if (vehicle->GetKmh() >= -MAX_VELOCITY)
+		{
+			acceleration = -MAX_ACCELERATION;
+		}
+
+		if (isEngineSFXPlayed == false) {
+			App->audio->PlayFx(engineSFX);
+			isEngineSFXPlayed = true;
+		}
 
 	}
 
@@ -334,9 +350,11 @@ update_status ModulePlayer::Update(float dt)
 	/* POST UPDATE */
 	vehicle->Render();
 	
+	gameTimer -= 1 * dt;
+
 	// Set window title
 	char title[200];
-	sprintf_s(title, "RACE CAR GAME 3D | Vehicle mass: %.1f kg | Vehicle current velocity: %.1f Km/h | World's Gravity: %.2f m/s2 | Drag Force: %s | Buoyancy Force: %s", vehicle->info.mass, vehicle->GetKmh(), App->physics->gravity_y, isDragForceEnabled ? "ENABLED":"DISABLED", isBuoyancyForceEnabled ? "ENABLED" : "DISABLED");
+	sprintf_s(title, "RACE CAR GAME 3D | Lap %d/3 | Time: %.f | Vehicle mass: %.1f kg | Vehicle current velocity: %.1f Km/h | World's Gravity: %.2f m/s2 | Drag Force: %s | Buoyancy Force: %s", laps, gameTimer, vehicle->info.mass, vehicle->GetKmh(), App->physics->gravity_y, isDragForceEnabled ? "ENABLED":"DISABLED", isBuoyancyForceEnabled ? "ENABLED" : "DISABLED");
 	App->window->SetTitle(title);
 
 	return UPDATE_CONTINUE;

@@ -27,9 +27,11 @@ public:
 
 	void createGround();
 	void createRoadCircuit();
+	void createLapSensors();
 
 	// Geometry shapes
 	void addCubeToMap(vec3 pos, vec3 size, Color rgb, int angle = 0, bool rot_X = false, bool rot_Y = false, bool rot_Z = false);
+	void addCubeSensorToMap(vec3 pos, vec3 size, Color rgb, int angle = 0, bool rot_X = false, bool rot_Y = false, bool rot_Z = false);
 
 public:
 	/*
@@ -41,6 +43,7 @@ public:
 	*/
 
 	p2List<Cube> smallCubes;
+	p2List<Cube> sensorLapCubes;
 
 	PhysBody3D* pb_chassis;
 	Cube p_chassis;

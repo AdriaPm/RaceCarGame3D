@@ -34,3 +34,4 @@ extern Color Orange;
 extern Color Yellow;
 extern Color Purple;
 extern Color Grey;
+extern Color Invisible;

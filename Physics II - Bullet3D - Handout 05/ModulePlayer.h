@@ -40,6 +40,9 @@ public:
 	bool isDragForceEnabled = true;
 	bool isBuoyancyForceEnabled = true;
 
+	float gameTimer = 250;
+	int laps = 0;
+
 private:
 
 	uint turboSFX = 0;
