@@ -110,13 +110,13 @@ bool ModulePlayer::Start()
 	car.chassis22_offset.Set(-0.22f, 2.05f, 0.8f);
 
 	// Car properties ----------------------------------------
-	car.mass = 500.0f;
-	car.suspensionStiffness = 30.88f;
-	car.suspensionCompression = 2.83f;
-	car.suspensionDamping = 2.23f;
-	car.maxSuspensionTravelCm = 5000.0f;
+	car.mass = 600.0f;
+	car.suspensionStiffness = 150.0f;
+	car.suspensionCompression = 1.5f;
+	car.suspensionDamping = 10.0f;
+	car.maxSuspensionTravelCm = 500.0f;
 	car.frictionSlip = 0.8f;
-	car.maxSuspensionForce = 4000.0f;
+	car.maxSuspensionForce = 6000.0f;
 
 	// Wheel properties ---------------------------------------
 	float connection_height = 1.5f;
@@ -205,9 +205,7 @@ update_status ModulePlayer::Update(float dt)
 {
 	turn = acceleration = brake = 0.0f;
 
-	// Drag force applied to the vehicle
-	App->physics->DragForce(vehicle, 30);
-
+	//Set player-vehicle position
 	position.setValue(vehicle->GetPos().getX(), vehicle->GetPos().getY(), vehicle->GetPos().getZ());
 
 	// Accelerate
@@ -260,18 +258,51 @@ update_status ModulePlayer::Update(float dt)
 		resetCarPos();
 	}
 
+	if (App->physics->debug == true)
+	{
+		/* Change car mass value */
+		// Increase
+		if (App->input->GetKey(SDL_SCANCODE_I) == KEY_REPEAT)
+			vehicle->info.mass = vehicle->info.mass + 1;
+		//Decrease
+		if (App->input->GetKey(SDL_SCANCODE_K) == KEY_REPEAT)
+			vehicle->info.mass = vehicle->info.mass - 1;
 
+
+		// Enable/Disable Drag Force
+		if (App->input->GetKey(SDL_SCANCODE_Y) == KEY_DOWN)
+			isDragForceEnabled = !isDragForceEnabled;
+
+		// Enable/Disable Buoyancy Force
+		if (App->input->GetKey(SDL_SCANCODE_H) == KEY_DOWN)
+			isBuoyancyForceEnabled = !isBuoyancyForceEnabled;
+	}
+
+	// Mechanical vehicle forces
 	vehicle->ApplyEngineForce(acceleration);
 	vehicle->Turn(turn);
 	vehicle->Brake(brake);
+
+
+	if (isDragForceEnabled == true) 
+	{
+		// Drag force applied to the vehicle
+		App->physics->DragForce(vehicle, 30);
+	}
+	
+	if (isBuoyancyForceEnabled == true)
+	{
+		// Buoyancy force applied to the vehicle
+		App->physics->BuoyancyForce(vehicle, 20);
+	}
 
 
 	/* POST UPDATE */
 	vehicle->Render();
 	
 	// Set window title
-	char title[80];
-	sprintf_s(title, "%.1f Km/h", vehicle->GetKmh());
+	char title[200];
+	sprintf_s(title, "RACE CAR GAME 3D | Vehicle mass: %.1f kg | Vehicle current velocity: %.1f Km/h | World's Gravity: %.2f m/s2 | Drag Force: %s | Buoyancy Force: %s", vehicle->info.mass, vehicle->GetKmh(), App->physics->gravity_y, isDragForceEnabled ? "ENABLED":"DISABLED", isBuoyancyForceEnabled ? "ENABLED" : "DISABLED");
 	App->window->SetTitle(title);
 
 	return UPDATE_CONTINUE;

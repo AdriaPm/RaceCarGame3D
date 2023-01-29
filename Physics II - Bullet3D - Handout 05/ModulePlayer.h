@@ -35,6 +35,8 @@ public:
 
 	vec3 initialPosition = { 0, 0, 0 };
 
+	bool isDragForceEnabled = true;
+	bool isBuoyancyForceEnabled = true;
 
 
 };

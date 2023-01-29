@@ -4,16 +4,25 @@
 
 Simple 3D racing car game created for Physics II subject at CITM-UPC university.
 
-## Key Features
-
- - {Feature01}
- - {Feature02}
- - {Feature03}
- - {Feature04}
- 
 ## Controls
 
- - {ControlsScheme}
+- {ARROWS} - Move F1 vehicle
+- {SPACEBAR} - Jump
+- {Q} - Respawn to initial position
+- {C} - Enable/Disable free camera movement
+	- {WASDRF} - Free camera movement
+
+## Key Features
+
+- {F1} - Enable/Disable Debug Mode
+
+If Debug Mode is ENABLED:
+- {I} - Increase vehicle mass (+1)
+- {K} - Decrease vehicle mass (-1)
+- {U} - Increase world Y-axis Gravity (+0.5)
+- {J} - Decrease world Y-axis Gravity (-0.5)
+- {Y} - Enable/Disable Drag Force
+- {H} - Enable/Disable Buoyancy Force
 
 ## Developers
 

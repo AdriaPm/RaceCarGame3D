@@ -36,14 +36,15 @@ public:
 	void AddConstraintHinge(PhysBody3D& bodyA, PhysBody3D& bodyB, const vec3& anchorA, const vec3& anchorB, const vec3& axisS, const vec3& axisB, bool disable_collision = false);
 	void AddConstraintSlider(PhysBody3D& bodyA, PhysBody3D& bodyB, btTransform& frameinA, btTransform& frameinB);
 
-	void SetGravity(vec3 g = { 0, -11, 0 });
+	void SetGravity(vec3 gravity);
 
 	vec3 BuoyancyForce(PhysBody3D* body, float volume);
 	vec3 DragForce(PhysBody3D* body, float density);
 
-private:
+	float gravity_y;
 
 	bool debug;
+private:
 
 	btDefaultCollisionConfiguration*	collision_conf;
 	btCollisionDispatcher*				dispatcher;

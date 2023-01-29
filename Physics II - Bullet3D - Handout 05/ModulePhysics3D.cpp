@@ -50,6 +50,8 @@ bool ModulePhysics3D::Start()
 {
 	LOG("Creating Physics environment");
 
+	gravity_y = GRAVITY.getY();
+
 	world = new btDiscreteDynamicsWorld(dispatcher, broad_phase, solver, collision_conf);
 	world->setDebugDrawer(debug_draw);
 	world->setGravity(GRAVITY);
@@ -112,9 +114,12 @@ update_status ModulePhysics3D::PreUpdate(float dt)
 // ---------------------------------------------------------
 update_status ModulePhysics3D::Update(float dt)
 {
+	world->setGravity({0,gravity_y, 0});
+
+	// DEBUG MODE
 	if(App->input->GetKey(SDL_SCANCODE_F1) == KEY_DOWN)
 		debug = !debug;
-
+	
 	if(debug == true)
 	{
 		world->debugDrawWorld();
@@ -123,18 +128,22 @@ update_status ModulePhysics3D::Update(float dt)
 		p2List_item<PhysVehicle3D*>* item = vehicles.getFirst();
 		while(item)
 		{
-			item->data->Render();
+			item->data->Render();	
 			item = item->next;
 		}
 
-		if(App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
-		{
-			Sphere s(1);
-			s.SetPos(App->camera->Position.x, App->camera->Position.y, App->camera->Position.z);
-			float force = 30.0f;
-			AddBody(s)->Push(-(App->camera->Z.x * force), -(App->camera->Z.y * force), -(App->camera->Z.z * force));
-		}
+		/* Change GRAVITY value */
+	// Increase gravity Y-axis
+		if (App->input->GetKey(SDL_SCANCODE_U) == KEY_DOWN)
+			gravity_y = gravity_y + 0.5;
+
+		// Decrease gravity Y-axis
+		if (App->input->GetKey(SDL_SCANCODE_J) == KEY_DOWN)
+			gravity_y = gravity_y - 0.5;
+
 	}
+
+	
 
 	return UPDATE_CONTINUE;
 }
@@ -329,6 +338,9 @@ PhysVehicle3D* ModulePhysics3D::AddVehicle(const VehicleInfo& info)
 	world->addVehicle(vehicle);
 	vehicles.add(pvehicle);
 
+	pvehicle->SetId(0);
+	body->setUserPointer(pvehicle);
+
 	return pvehicle;
 }
 
@@ -377,11 +389,12 @@ vec3 ModulePhysics3D::BuoyancyForce(PhysBody3D* body, float volume) {
 	return forceBuoy;
 }
 
-vec3 ModulePhysics3D::DragForce(PhysBody3D* body, float density) {
-	float dragModule;
-	dragModule = 0.5f * density;
-
-	vec3 forceDrag = { -dragModule * body->GetLinearVelocity().getX(), -dragModule * body->GetLinearVelocity().getY(),-dragModule * body->GetLinearVelocity().getZ() };
+vec3 ModulePhysics3D::DragForce(PhysBody3D* body, float density) 
+{
+	float drag;
+	drag = 0.5f * density;
+	vec3 forceDrag = { -drag * body->GetLinearVelocity().getX(), -drag * body->GetLinearVelocity().getY(),-drag * body->GetLinearVelocity().getZ() };
+	
 	return forceDrag;
 }
 
