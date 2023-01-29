@@ -150,3 +150,6 @@ Physics II - Bullet3D - Handout 05/Debug/Primitive.obj
 Physics II - Bullet3D - Handout 05/Debug/Timer.obj
 Physics II - Bullet3D - Handout 05/Debug/vc142.idb
 Physics II - Bullet3D - Handout 05/Debug/vc142.pdb
+*.tlog
+*.log
+Physics II - Bullet3D - Handout 05/.vs/3D Physics/v16/.suo
