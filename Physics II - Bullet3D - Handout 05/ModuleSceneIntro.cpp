@@ -118,11 +118,10 @@ void ModuleSceneIntro::createRoadCircuit()
 	addCubeToMap({ -40, 1, 165 }, { 2, 2, 50 }, Grey, -45, false, true, false);
 	addCubeToMap({ -100, 1, 180 }, { 100, 2, 2 }, Grey, 0, false, false, false);
 	addCubeToMap({ -145, 1, 210 }, { 100, 2, 2 }, Grey, 0, false, false, false);
-
 	addCubeToMap({ -145, 1, 130 }, { 100, 2, 2 }, Grey, 90, false, true, false);
-	//addCubeToMap({ , 1, }, { 100, 2, 2 }, Grey, 0, false, false, false);
-
-
+	addCubeToMap({ -145, 1, 70 }, { 50, 2, 2 }, Grey, 90, false, true, false);
+	addCubeToMap({ -85, 1, 45 }, { 120, 2, 2 }, Grey, 0, false, false, false);
+	addCubeToMap({ -25, 1, 46.5 }, { 2, 2, 7 }, Grey, 0, false, false, false);
 
 }
 

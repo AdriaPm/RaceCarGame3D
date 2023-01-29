@@ -1,5 +1,5 @@
-﻿  ModulePlayer.cpp
-C:\Users\adria\Documents\GitHub\RaceCarGame3D\Physics II - Bullet3D - Handout 05\ModulePlayer.cpp(41,42): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-C:\Users\adria\Documents\GitHub\RaceCarGame3D\Physics II - Bullet3D - Handout 05\ModulePlayer.cpp(45,43): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-C:\Users\adria\Documents\GitHub\RaceCarGame3D\Physics II - Bullet3D - Handout 05\ModulePlayer.cpp(53,44): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-  3D Physics.vcxproj -> C:\Users\adria\Documents\GitHub\RaceCarGame3D\Physics II - Bullet3D - Handout 05\Debug\3D Physics - class5.exe
+﻿  ModuleSceneIntro.cpp
+C:\Users\joelc\Githubproject1\RaceCarGame3D\Physics II - Bullet3D - Handout 05\ModuleSceneIntro.cpp(169,20): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\joelc\Githubproject1\RaceCarGame3D\Physics II - Bullet3D - Handout 05\ModuleSceneIntro.cpp(171,20): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\joelc\Githubproject1\RaceCarGame3D\Physics II - Bullet3D - Handout 05\ModuleSceneIntro.cpp(173,20): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+  3D Physics.vcxproj -> C:\Users\joelc\Githubproject1\RaceCarGame3D\Physics II - Bullet3D - Handout 05\Debug\3D Physics - class5.exe
