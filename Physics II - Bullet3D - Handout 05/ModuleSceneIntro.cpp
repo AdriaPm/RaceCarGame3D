@@ -99,6 +99,7 @@ void ModuleSceneIntro::PlayerCamera() {
 
 void ModuleSceneIntro::createRoadCircuit()
 {
+
 	addCubeToMap({ 0, 1, 100 }, { 50, 2, 30 }, White, -10, true, false, false);
 
 
