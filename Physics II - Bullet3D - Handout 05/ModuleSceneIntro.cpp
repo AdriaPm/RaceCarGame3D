@@ -101,6 +101,15 @@ void ModuleSceneIntro::createRoadCircuit()
 {
 
 	addCubeToMap({ 0, 1, 100 }, { 50, 2, 30 }, White, -10, true, false, false);
+	addCubeToMap({ 25, 1, 100 }, { 2, 2, 100 }, Grey, 0, false, false, false);
+	addCubeToMap({ -25, 1, 100 }, { 2, 2, 100 }, Grey, 0, false, false, false);
+	addCubeToMap({ 10, 1, 165 }, { 2, 2, 50 }, Grey, -45, false, true, false);
+	addCubeToMap({ -40, 1, 165 }, { 2, 2, 50 }, Grey, -45, false, true, false);
+	addCubeToMap({ -15, 1, 190 }, { 2, 2, 50 }, Grey, -45, false, true, false);
+	addCubeToMap({ -100, 1, 180 }, { 100, 2, 2 }, Grey, 0, false, false, false);
+	addCubeToMap({ -75, 1, 210 }, { 100, 2, 2 }, Grey, 0, false, false, false);
+	
+	addCubeToMap({ -145, 1, 210 }, { 100, 2, 2 }, Grey, 0, false, false, false);
 
 
 
@@ -111,7 +120,7 @@ void ModuleSceneIntro::createRoadCircuit()
 void ModuleSceneIntro::createGround() {
 	Cube groundToAdd;
 
-	float groundTerrainSize = 40;	// Change this value to increase/decrease basic ground size
+	float groundTerrainSize = 60;	// Change this value to increase/decrease basic ground size
 
 	groundToAdd.size = { groundTerrainSize, 1, groundTerrainSize };
 
