@@ -18,6 +18,9 @@ bool ModulePlayer::Start()
 {
 	LOG("Loading player");
 
+	turboSFX = App->audio->LoadFx("Assets/Audio/Fx/turboSFX.wav");
+	engineSFX = App->audio->LoadFx("Assets/Audio/Fx/engineSFX.wav");
+
 	VehicleInfo car;
 
 	// Car chasis --------------------------------------------
@@ -115,7 +118,7 @@ bool ModulePlayer::Start()
 	car.suspensionCompression = 1.5f;
 	car.suspensionDamping = 10.0f;
 	car.maxSuspensionTravelCm = 500.0f;
-	car.frictionSlip = 0.8f;
+	car.frictionSlip = 0.3f;
 	car.maxSuspensionForce = 6000.0f;
 
 	// Wheel properties ---------------------------------------
@@ -211,7 +214,38 @@ update_status ModulePlayer::Update(float dt)
 	// Accelerate
 	if(App->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
 	{
-		acceleration = MAX_ACCELERATION;
+		if (vehicle->GetKmh() <= MAX_VELOCITY) 
+		{
+			acceleration = MAX_ACCELERATION;
+		}
+
+		if (isEngineSFXPlayed == false) {
+			App->audio->PlayFx(engineSFX);
+			isEngineSFXPlayed = true;
+		}
+
+
+		// TURBOOOO
+		if (App->input->GetKey(SDL_SCANCODE_LSHIFT) == KEY_REPEAT) 
+		{
+			if (vehicle->GetKmh() < MAX_VELOCITY_TURBO) 
+			{
+				acceleration = MAX_ACCELERATION * 100000;
+				if (isTurboSFXPlayed == false) {
+					App->audio->PlayFx(turboSFX);
+					isTurboSFXPlayed = true;
+				}
+			}
+		}
+		else
+		{
+			isTurboSFXPlayed = false;
+		}
+		
+	}
+	else
+	{
+		isEngineSFXPlayed = false;
 	}
 
 	// Turn Left

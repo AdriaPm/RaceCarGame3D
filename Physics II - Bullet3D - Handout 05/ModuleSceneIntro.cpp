@@ -17,6 +17,8 @@ bool ModuleSceneIntro::Start()
 	LOG("Loading Intro assets");
 	bool ret = true;
 
+	App->audio->PlayMusic("Assets/Audio/Music/main_song.ogg", 90);
+
 
 	// Create world ground
 	createGround();

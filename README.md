@@ -8,6 +8,7 @@ Simple 3D racing car game created for Physics II subject at CITM-UPC university.
 
 - {ARROWS} - Move F1 vehicle
 - {SPACEBAR} - Jump
+- {SHIFT} - Turbo
 - {Q} - Respawn to initial position
 - {C} - Enable/Disable free camera movement
 	- {WASDRF} - Free camera movement

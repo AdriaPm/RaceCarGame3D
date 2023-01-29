@@ -5,9 +5,11 @@
 
 struct PhysVehicle3D;
 
-#define MAX_ACCELERATION 5000.0f
+#define MAX_ACCELERATION 3000.0f
 #define TURN_DEGREES 25.0f * DEGTORAD
-#define BRAKE_POWER 3000.0f
+#define BRAKE_POWER 2000.0f
+#define MAX_VELOCITY 150.0f
+#define MAX_VELOCITY_TURBO 200.0f
 
 class ModulePlayer : public Module
 {
@@ -38,5 +40,12 @@ public:
 	bool isDragForceEnabled = true;
 	bool isBuoyancyForceEnabled = true;
 
+private:
+
+	uint turboSFX = 0;
+	bool isTurboSFXPlayed = false;
+
+	uint engineSFX = 0;
+	bool isEngineSFXPlayed = false;
 
 };
