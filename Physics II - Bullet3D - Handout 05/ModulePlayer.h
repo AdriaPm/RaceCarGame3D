@@ -10,6 +10,7 @@ struct PhysVehicle3D;
 #define BRAKE_POWER 2000.0f
 #define MAX_VELOCITY 150.0f
 #define MAX_VELOCITY_TURBO 200.0f
+#define DEATH_FIELD_FALL_DISTANCE -300
 
 class ModulePlayer : public Module
 {

@@ -176,7 +176,7 @@ void ModuleSceneIntro::createLapSensors() {
 void ModuleSceneIntro::createGround() {
 	Cube groundToAdd;
 
-	float groundTerrainSize = 60;	// Change this value to increase/decrease basic ground size
+	float groundTerrainSize = 25;	// Change this value to increase/decrease basic ground size
 
 	groundToAdd.size = { groundTerrainSize, 1, groundTerrainSize };
 

@@ -214,6 +214,10 @@ update_status ModulePlayer::Update(float dt)
 	//Set player-vehicle position
 	position.setValue(vehicle->GetPos().getX(), vehicle->GetPos().getY(), vehicle->GetPos().getZ());
 
+	// Respawn car to initial position if it fall to the abyss
+	if (position.getY() < DEATH_FIELD_FALL_DISTANCE)
+		resetCarPos();
+
 	// Accelerate
 	if(App->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
 	{
@@ -332,7 +336,6 @@ update_status ModulePlayer::Update(float dt)
 	vehicle->ApplyEngineForce(acceleration);
 	vehicle->Turn(turn);
 	vehicle->Brake(brake);
-
 
 	if (isDragForceEnabled == true) 
 	{
